@@ -11,8 +11,6 @@ package Particle
 
 	public class BaseParticle extends AParticle implements IParticle,INeedHit
 	{
-		public var bitData:BitmapData;
-		public var rect:Rectangle
 		public function BaseParticle()
 		{
 			super();
@@ -53,27 +51,7 @@ package Particle
 			return ( !(x>KeyTest.T_W || y>KeyTest.T_H || x<0 ||y<0) ) ;
 		}
 		
-		private var _copyParticle_rect:Rectangle = new Rectangle(0, 0, 15, 15);
-		private var _copyParticle_point:Point = new Point();
 
-		public function UpdataBitmap():void
-		{
-			if(!bitData && !rect) return;
-
-			//确定要绘制到BitmapData上的颜色
-			var _color:uint =	color;
-			var _centerX:Number = x;
-			var _centerY:Number = y;
-
-	
-			var _random_bd:BitmapData = ParticleCreater.ParticleBD;
-			trace("!!!!!!!!!!")
-			//将其绘制到发光的BitmapData上
-			//用现有的Rectangle和Point避免重复new
-			_copyParticle_point.x = _centerX;
-			_copyParticle_point.y = _centerY;
-			bitData.copyPixels(_random_bd, _copyParticle_rect, _copyParticle_point);
-		}
 		
 		public function get m_x():Number
 		{

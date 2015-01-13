@@ -1,17 +1,13 @@
 package P___H
 {
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.geom.Point;
-	import flash.geom.Rectangle;
 	
 	import Hit.HitRect;
 	
 	import Key.KeyStage;
 	
-	import Particle.BaseParticle;
 	import Particle.ParticleCreater;
 	import Particle.ParticleManager;
 
@@ -57,7 +53,9 @@ package P___H
 			{
 				for(var count:Number = 0; count<1; count++)
 				{
-					
+					var Data:BaseNeedHit = ParticleCreater.ins.creatBaseNeedHitByXY(0,0,new Fmc())
+					ParticleManager.ins.addPartic(Data)
+					addChild(Data);
 				}
 			}
 

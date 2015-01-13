@@ -26,7 +26,6 @@ package Particle
 				if(i.isLive)
 				{
 					i.Liveing();
-					BaseParticle(i).UpdataBitmap();
 						
 				}else
 				{
