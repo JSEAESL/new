@@ -1,0 +1,16 @@
+package
+{
+	public class KeyManager
+	{
+		public static var ins:KeyManager = new KeyManager();
+		public function KeyManager()
+		{
+			init();
+		}
+		
+		private function init():void
+		{
+			
+		}
+	}
+}

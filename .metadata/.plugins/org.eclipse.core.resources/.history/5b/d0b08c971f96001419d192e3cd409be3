@@ -1,0 +1,9 @@
+package Hit
+{
+	public class ResCase
+	{
+		public function ResCase()
+		{
+		}
+	}
+}

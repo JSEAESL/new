@@ -1,0 +1,81 @@
+package Particle
+{
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import flash.filters.ConvolutionFilter;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
+	
+
+	public class ParticleView extends Sprite
+	{
+		public static var ins:ParticleView = new ParticleView();
+		private var ViewBitmap:BitmapData;
+		private var ViewBit:Bitmap;
+		private var ViewMainRect:Rectangle;
+		
+		private var _glow_bd:BitmapData;
+		private var _fireworks_bd:BitmapData;
+
+		private var _0pt:Point
+		private var _thisBound:Rectangle
+		private var _lastBound:Rectangle;
+		//将高手写的模糊滤镜先抄过来
+		private var cf:ConvolutionFilter = new ConvolutionFilter(3, 3, [1, 1, 1, 1, 32, 1, 1, 1, 1],41.8,0);
+		public function ParticleView()
+		{
+			init()
+			addEventListener(Event.ENTER_FRAME,onEnter);
+		}
+		private function init():void
+		{
+			//初始化最终位图
+			ViewBitmap = new BitmapData(KeyTest.T_W,KeyTest.T_H,false,0x000000)
+			//初始化主位图
+			_fireworks_bd = new BitmapData(KeyTest.T_W, KeyTest.T_H, false, 0x000000);
+			//初始化发光部分的位图，由于在上层，所以要透明
+			_glow_bd = new BitmapData(KeyTest.T_W, KeyTest.T_H, true, 0x00000000);
+			
+			ViewBit = new Bitmap(ViewBitmap);
+			ViewMainRect = new Rectangle(0, 0, KeyTest.T_W, KeyTest.T_H);
+
+
+			_0pt = new Point();
+			ParticleCreater.ins.setBG(ViewBitmap,_fireworks_bd,_glow_bd)
+			
+			addChild(ViewBit);
+		}
+		public function setDown(e:MouseEvent):void
+		{
+			for(var count:Number = 0; count<50; count++)
+			{
+				var Data:BaseParticle = ParticleCreater.ins.creatBaseParticleByXY(e.localX,e.localY,_glow_bd,ViewMainRect)
+				ParticleManager.ins.addPartic(Data)				
+			}
+		}
+		
+
+		
+		private function onEnter(e:Event):void
+		{
+			ViewBitmap.lock()
+			if(_lastBound)
+			{
+				_glow_bd.fillRect(ViewMainRect, 0xff0000);		
+			}
+			
+
+			ParticleManager.ins.live();
+			
+			
+			ViewBitmap.copyPixels(_glow_bd, ViewMainRect, _0pt);
+			_thisBound = ViewBitmap.getColorBoundsRect(0xFFFFFF, 0x000000, false);
+			ViewBitmap.unlock(_lastBound ? _thisBound.union(_thisBound) : _thisBound);
+			_lastBound = _thisBound;
+
+		}
+	}
+}

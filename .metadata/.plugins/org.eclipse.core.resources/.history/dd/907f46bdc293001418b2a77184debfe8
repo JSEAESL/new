@@ -1,0 +1,9 @@
+package
+{
+	public class JTimeManager
+	{
+		public function JTimeManager()
+		{
+		}
+	}
+}

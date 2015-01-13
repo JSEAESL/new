@@ -1,0 +1,28 @@
+package
+{
+	import flash.display.Sprite;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+
+	public class KeyView extends Sprite
+	{
+		public static var ins:KeyView = new KeyView()
+		public function KeyView()
+		{
+			init();
+		}
+		
+		private var showText:TextField;
+		private function init():void
+		{
+			showText = new TextField();
+			addChild(showText);
+			showText.width = KeyStage.width;
+			showText.height = KeyStage.height;
+			var showTextFormat:TextFormat = new TextFormat(null,30);
+			showText.setTextFormat(showTextFormat)
+			
+			showText.text = "THIS IS KEY VIEW";
+		}
+	}
+}

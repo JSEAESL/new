@@ -1,0 +1,9 @@
+package Particle
+{
+	public interface IParticle
+	{
+		function Base():void
+		function Liveing():void
+		function get isLive():Boolean
+	}
+}

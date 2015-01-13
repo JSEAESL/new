@@ -1,0 +1,32 @@
+package P___H
+{
+	import flash.display.Sprite;
+	
+	import Hit.HitRect;
+	
+	import Key.KeyStage;
+
+	public class PHView extends Sprite
+	{
+		public static var ins:PHView = new PHView()
+		public function PHView()
+		{
+			init();
+		}
+		
+		public static var mHitRect:HitRect;
+		private function init():void
+		{
+			var hit:BaseBitmapHit = new BaseBitmapHit(new Pmc());
+			KeyStage.ins.setEasyDraw(hit);
+			addChild(hit);
+			
+			
+			mHitRect = new HitRect();
+			//addChild(mHitRect);
+			mHitRect.setDimHit(hit);
+			
+			//Hitr.addHit(BaseHit1)
+		}
+	}
+}

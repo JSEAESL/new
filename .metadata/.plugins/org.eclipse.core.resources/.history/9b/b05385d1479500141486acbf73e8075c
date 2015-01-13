@@ -1,0 +1,97 @@
+package
+{	
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+	import Key.KeyView;
+
+	public class KeyData
+	{
+		//90
+		public static var ZStr:KeyStr
+		//88
+		public static var XStr:KeyStr
+		//67
+		public static var CStr:KeyStr
+		//86
+		public static var VStr:KeyStr
+		
+		//90
+		//88
+		public static var ZXStr:KeyStr
+		//88
+		//67
+		public static var XCStr:KeyStr
+		
+		//67
+		//86
+		public static var CVStr:KeyStr
+
+		
+		public static var DealTime:Number = 1000;
+		
+		private static var CDTime:Timer
+		
+		public static var NowHeatNum:Number = 0;
+		
+		public function KeyData()
+		{
+
+		}
+		
+
+		//热量积累
+		public static function addHeat(addHeat:Number):void
+		{
+			NowHeatNum = (NowHeatNum + addHeat)>100 ? 100:(NowHeatNum + addHeat);
+			KeyView.ins.changeHeat(NowHeatNum);
+		}
+		
+		public static function Cool():void
+		{
+			//CDTime.delay
+			if(!CDTime.running)
+			{
+				KeyView.ins.cleanHeat();
+				CDTime.reset();
+				CDTime.start();
+			}
+		}
+		
+		//冷却完毕
+		private static function onTimer(e:TimerEvent):void
+		{
+			NowHeatNum = 0;
+			ZStr.cool();
+			XStr.cool();
+			CStr.cool();
+			VStr.cool();
+			ZXStr.cool();
+			XCStr.cool();
+			CVStr.cool();
+		}
+
+		
+		public static function initData():void
+		{
+			CDTime = new Timer(DealTime,1);
+			CDTime.addEventListener(TimerEvent.TIMER,onTimer);
+			ZStr = new KeyStr();
+ 			XStr = new KeyStr();
+ 			CStr = new KeyStr();
+ 			VStr = new KeyStr();
+
+			ZXStr = new KeyStr();
+			XCStr = new KeyStr();
+			CVStr = new KeyStr();
+
+			ZStr.push(["Z1","Z2","Z3","Z4"]);
+			XStr.push(["X1","X2","X3","X4"]);
+			CStr.push(["C1","C2","C3","C4"]);
+			VStr.push(["V1","V2","V3","V4"]);
+
+			ZXStr.push(["ZX"]);
+			XCStr.push(["XC"]);
+			CVStr.push(["CV"]);
+		}
+	}
+}

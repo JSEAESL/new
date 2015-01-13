@@ -1,0 +1,33 @@
+package
+{
+	public class KeyData
+	{
+		//90
+		public static var ZStr:KeyStr = ["Z1","Z2","Z3","Z4"];
+		//88
+		public static var XStr:KeyStr = ["X1","X2","X3","X4"];
+		//67
+		public static var CStr:KeyStr = ["C1","C2","C3","C4"];
+		//86
+		public static var VStr:KeyStr = ["V1","V2","V3","V4"];
+		
+		public static var DealTime:Number = 5000;
+		
+		public function KeyData()
+		{
+			
+		}
+		
+		public static function initData():void
+		{
+			
+		}
+	}
+}
+class KeyStr extends Array
+{
+	public function KeyStr ()
+	{
+		super();
+	}
+}

@@ -1,0 +1,174 @@
+package
+{
+	import com.greensock.TweenLite;
+	import com.greensock.plugins.VolumePlugin;
+	
+	import flash.display.Shape;
+	import flash.display.Sprite;
+	import flash.profiler.Telemetry;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+	import flash.utils.Dictionary;
+
+	public class KeyView extends Sprite
+	{
+		public static var ins:KeyView = new KeyView()
+		public function KeyView()
+		{
+			KeyData.initData()
+			init();
+		}
+		
+		private var showText:TextField; 
+		
+		public var Heat:Shape;
+		public static var HeatNum:Number = 800
+		private function init():void
+		{
+			keyDic = new Dictionary();
+			creatHeat();
+		
+			//showText.text = "THIS IS KEY VIEW";
+			creatNewText()
+			initKeyText();
+		}
+		private function initKeyText():void
+		{
+			keyCount = 0;
+			initKeyData(KeyData.ZStr.KeyArr)
+			initKeyData(KeyData.XStr.KeyArr)
+			initKeyData(KeyData.CStr.KeyArr)
+			initKeyData(KeyData.VStr.KeyArr)
+			initKeyData(KeyData.ZXStr.KeyArr)
+			initKeyData(KeyData.XCStr.KeyArr)
+			initKeyData(KeyData.CVStr.KeyArr)
+		}
+
+		private var keyDic:Dictionary
+		private var keyCount:Number;
+		private function initKeyData(data:Array):void
+		{
+			var len:Number = data.length;
+			var poY:Number = 800;
+			var poX:Number = 0;
+			
+			var keyText:TextField
+			var keyShap:Shape 
+			for(var index:int = 0; index<len; index++)
+			{
+				keyText = new TextField();
+				keyText.width = KeyStage.width;
+				keyText.height = KeyStage.height;
+				keyText.x = poX;
+				keyText.y = poY - keyCount*30;
+				keyShap = new Shape();
+				addChild(keyShap);
+
+				setKeyText(keyText,keyShap,data[index])
+
+
+				keyDic[data[index]] = {"TF":keyText,"Shap":keyShap};
+				keyCount += 1;
+				addChild(keyText);
+			}
+			var shap:Shape = new Shape();
+			shap.graphics.lineStyle(1,0xFF0000);
+			shap.graphics.moveTo(poX,keyText.y);
+			shap.graphics.lineTo(300,keyText.y);
+			addChild(shap);
+		}
+		
+		
+		public function ChangeKeyDataText(key:KeyVo):void
+		{
+			var ob:Object = keyDic[key];
+			if(!ob) return;
+			setKeyText(ob.TF,ob.Shap,key)
+
+		}
+		
+		public function setKeyText(dim:TextField,shap:Shape,key:KeyVo):void
+		{
+			var colour:uint= 0x00BFFF;
+			if(key.isCD) colour = 0xFF0000;
+			
+			shap.graphics.clear();
+			shap.graphics.beginFill(colour,0.5);
+			shap.graphics.drawRect(dim.x,dim.y,dim.width,20)
+			
+			dim.text = key.getStr();
+			var showTextFormat:TextFormat = new TextFormat();
+			showTextFormat.size = 20
+			dim.setTextFormat(showTextFormat)
+			
+	
+		}
+		
+		
+		private var HeatTF:TextField;
+		private function creatHeat():void
+		{
+			Heat = new Shape();
+			Heat.graphics.lineStyle(0);
+			Heat.graphics.beginFill(0xFF0000,0.5)			
+			Heat.graphics.drawRect(1,1,HeatNum,20)
+			Heat.graphics.endFill()
+			Heat.width = 0;
+			addChild(Heat);
+			
+			HeatTF = new TextField();
+			HeatTF.x = 900;
+			HeatTF.y = 30;
+		}
+
+		private function creatNewText():void
+		{
+			showText = new TextField();
+			addChild(showText);
+			showText.width = KeyStage.width;
+			showText.height = KeyStage.height;
+			showText.x = 0 
+			showText.y = 100 
+		}
+		
+		public function SideShowText(text:String):void
+		{
+			showText.appendText("-->" + text);
+			var showTextFormat:TextFormat = new TextFormat();
+			showTextFormat.size = 30
+			showText.setTextFormat(showTextFormat)
+		}
+		
+		public function clean():void
+		{
+			showText.text = "";
+		}
+		
+
+		
+	
+		public function cleanHeat():void
+		{
+			clean()
+			var deal:Number = 1;
+			var width:Number = 0;
+			TweenLite.to(Heat,deal,{"width":width,"onComplete":AniEnd})
+		}
+		
+		public function changeHeat(heat:Number):void
+		{
+			HeatTF.text = heat + ""
+			
+			var deal:Number = 0.3;
+			var width:Number = heat/100*HeatNum;
+			TweenLite.to(Heat,deal,{"width":width,"onComplete":AniEnd})
+		}
+
+		private var isAni:Boolean = false;
+		public function AniEnd():void
+		{
+			isAni = false;
+		}
+		
+	}
+}

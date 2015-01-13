@@ -1,0 +1,8 @@
+package Particle
+{
+	public interface IParticle
+	{
+		function Base():void
+		function Destory():void
+	}
+}

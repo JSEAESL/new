@@ -1,0 +1,45 @@
+package P___H
+{
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.Sprite;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
+	
+	import Hit.HitRect;
+	
+	import Key.KeyStage;
+
+	public class PHView extends Sprite
+	{
+		public static var ins:PHView = new PHView()
+			
+		private var ViewBitmap:BitmapData;
+		private var ViewBit:Bitmap;
+		private var ViewMainRect:Rectangle;
+		
+		private var bitbd:BitmapData;
+		
+		private var _0pt:Point
+		
+		public function PHView()
+		{
+			Particleinit();
+		}
+		
+		public static var mHitRect:HitRect;
+		private function init():void
+		{
+			var hit:BaseBitmapHit = new BaseBitmapHit(new Pmc());
+			KeyStage.ins.setEasyDraw(hit);
+			addChild(hit);
+			
+			
+			mHitRect = new HitRect();
+			//addChild(mHitRect);
+			mHitRect.setDimHit(hit);
+			
+			//Hitr.addHit(BaseHit1)
+		}
+	}
+}

@@ -1,0 +1,12 @@
+package
+{
+	public class KeyVo
+	{
+		private var Str:String;
+		private var isCD:Boolean;
+		private var cost:Number;
+		public function KeyVo()
+		{
+		}
+	}
+}

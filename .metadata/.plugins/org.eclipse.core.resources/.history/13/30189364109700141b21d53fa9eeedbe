@@ -1,0 +1,10 @@
+package Particle
+{
+	public class Pool
+	{
+		private var poos:Array
+		public function Pool()
+		{
+		}
+	}
+}

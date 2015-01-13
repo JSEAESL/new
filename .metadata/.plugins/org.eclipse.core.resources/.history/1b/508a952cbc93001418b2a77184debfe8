@@ -1,0 +1,14 @@
+package
+{
+	import flash.display.Sprite;
+	
+	public class KeyTest extends Sprite
+	{
+		public function KeyTest()
+		{
+			if(stage) init();
+		}
+		
+		init();
+	}
+}

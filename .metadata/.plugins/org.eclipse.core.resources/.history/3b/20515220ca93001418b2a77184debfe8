@@ -1,0 +1,12 @@
+package
+{
+	public class JCallLater
+	{
+		private static var ins:JCallLater = new JCallLater();
+		private var funList:Array;
+		private var argList:Array;
+		public function JCallLater()
+		{
+		}
+	}
+}

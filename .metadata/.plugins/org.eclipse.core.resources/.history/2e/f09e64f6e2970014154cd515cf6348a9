@@ -1,0 +1,33 @@
+package P___H
+{
+	import Hit.I.IHit;
+	
+	import flash.geom.Rectangle;
+	
+	public class BaseBitmapHit implements IHit
+	{
+		public function BaseBitmapHit()
+		{
+			
+		}
+		
+		public function getHit():*
+		{
+			return null;
+		}
+		
+		public function Hit(...arg):Boolean
+		{
+			return false;
+		}
+		
+		public function HitChange(otherHit:IHit):void
+		{
+		}
+		
+		public function getHitRect():Rectangle
+		{
+			return null;
+		}
+	}
+}

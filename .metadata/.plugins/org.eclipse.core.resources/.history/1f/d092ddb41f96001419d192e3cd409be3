@@ -1,0 +1,23 @@
+package Hit
+{
+	import flash.utils.Dictionary;
+
+	public class ResCase
+	{
+		public static var ins:ResCase = new ResCase();
+		public var ResDic:Dictionary;
+		public function ResCase()
+		{
+			ResDic = new Dictionary();
+		}
+		
+		public function pushCase():void
+		{
+			
+		}
+		public function getCase():void
+		{
+			
+		}
+	}
+}

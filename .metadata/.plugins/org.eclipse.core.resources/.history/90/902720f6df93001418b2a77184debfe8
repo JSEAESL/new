@@ -1,0 +1,10 @@
+package
+{
+	public class JRenderManager
+	{
+		private static var ins:JRenderManager = new JRenderManager();
+		public function JRenderManager()
+		{
+		}
+	}
+}

@@ -1,0 +1,13 @@
+package
+{
+	import flash.display.Sprite;
+
+	public class KeyView extends Sprite
+	{
+		public static var ins:KeyView = new KeyView()
+		public function KeyView()
+		{
+			init();
+		}
+	}
+}

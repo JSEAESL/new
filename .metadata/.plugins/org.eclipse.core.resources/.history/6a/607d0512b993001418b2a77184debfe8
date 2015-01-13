@@ -1,0 +1,13 @@
+package
+{
+	public class KeyData
+	{
+		private static var ZStr:Array = ["Z1","Z2","Z3","Z4"];
+		private static var XStr:Array = ["X1","X2","X3","X4"];
+		private static var CStr:Array = ["C1","C2","C3","C4"];
+		private static var VStr:Array = ["V1","V2","V3","V4"];
+		public function KeyData()
+		{
+		}
+	}
+}

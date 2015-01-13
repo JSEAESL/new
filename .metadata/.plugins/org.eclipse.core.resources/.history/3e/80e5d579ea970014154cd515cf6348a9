@@ -1,0 +1,15 @@
+package P___H
+{
+	import flash.display.BitmapData;
+	import flash.geom.Rectangle;
+
+	public interface INeedHit
+	{
+		function getBitData():BitmapData
+		function get x():Number
+		function get y():Number
+		
+		
+		function get Rect():Rectangle
+	}
+}

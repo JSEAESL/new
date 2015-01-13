@@ -1,0 +1,13 @@
+package
+{
+	import flash.display.Sprite;
+	import flash.text.engine.Kerning;
+
+	public class KeyView extends Sprite
+	{
+		public static var View:KeyView = new KeyView()
+		public function KeyView()
+		{
+		}
+	}
+}

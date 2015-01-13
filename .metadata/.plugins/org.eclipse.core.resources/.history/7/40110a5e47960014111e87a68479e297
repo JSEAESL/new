@@ -1,0 +1,7 @@
+package Particle
+{
+	public interface IParticle
+	{
+		function base():void
+	}
+}

@@ -1,0 +1,10 @@
+package
+{
+	public class KeyData
+	{
+		private static var A
+		public function KeyData()
+		{
+		}
+	}
+}

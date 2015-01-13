@@ -1,0 +1,7 @@
+package Hit
+{
+	public interface IHit
+	{
+		function getHit():
+	}
+}

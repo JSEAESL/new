@@ -1,0 +1,11 @@
+package Hit
+{
+	public interface IHit
+	{
+		function getHit():*
+		function HitChange(otherHit:IHit):void
+		
+			
+		
+	}
+}

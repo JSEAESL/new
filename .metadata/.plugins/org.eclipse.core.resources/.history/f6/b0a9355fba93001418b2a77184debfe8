@@ -1,0 +1,9 @@
+package
+{
+	public class KeyStage
+	{
+		public function KeyStage()
+		{
+		}
+	}
+}

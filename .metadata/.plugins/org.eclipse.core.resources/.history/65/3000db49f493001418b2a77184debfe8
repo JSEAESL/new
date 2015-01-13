@@ -1,0 +1,57 @@
+package
+{
+	import flash.events.TimerEvent;
+	import flash.utils.Dictionary;
+	import flash.utils.Timer;
+	import flash.utils.getTimer;
+
+	public class KeyManager
+	{
+		public static var ins:KeyManager = new KeyManager();
+		public function KeyManager()
+		{
+			init();
+		}
+		
+		private var KeyDic:Dictionary;
+		private var time:Timer;
+		private function init():void
+		{
+			KeyDic = new Dictionary();
+			KeyDic[90] = KeyData.ZStr;
+			KeyDic[88] = KeyData.XStr;
+			KeyDic[67] = KeyData.CStr;
+			KeyDic[86] = KeyData.VStr;
+			
+			Waitlist = [];
+			time = new Timer(30,1)
+			time.addEventListener(TimerEvent.TIMER_COMPLETE,onTimer);	
+		}
+		
+		private function onTimer(e:TimerEvent):void
+		{
+			var len:Number= Waitlist.length
+				;
+			keyList.s
+		}
+		
+		private var Waitlist:Array;
+		private var lastTime:Number;
+		public function getKeyCode(code:Number):void
+		{
+			lastTime = getTimer(); 
+			var ob:KeyCodeOb  = new KeyCodeOb()
+			ob.code = code
+			ob.creatTime = lastTime
+			Waitlist.push(ob);
+			
+		}
+		
+
+	}
+}
+class KeyCodeOb{
+	public var code:Number;
+	public var creatTime:Number
+	
+}

@@ -1,0 +1,10 @@
+package
+{
+	public class KeyStage
+	{
+		public static var ins:KeyStage  = KeyStage
+		public function KeyStage()
+		{
+		}
+	}
+}

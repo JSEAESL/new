@@ -1,0 +1,18 @@
+package Hit
+{
+	public class BaseHit implements IHit
+	{
+		public function BaseHit()
+		{
+		}
+		
+		public function getHit():*
+		{
+			return null;
+		}
+		
+		public function HitChange(otherHit:IHit):void
+		{
+		}
+	}
+}

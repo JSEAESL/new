@@ -1,0 +1,9 @@
+package
+{
+	public class JDealCall
+	{
+		public function JDealCall()
+		{
+		}
+	}
+}

@@ -1,0 +1,21 @@
+package
+{
+	import flash.utils.Dictionary;
+
+	public class KeyManager
+	{
+		public static var ins:KeyManager = new KeyManager();
+		public function KeyManager()
+		{
+			init();
+		}
+		
+		private var KeyDic:Dictionary;
+		private function init():void
+		{
+			KeyDic = new Dictionary();
+			KeyDic[90] = KeyData.ZStr;
+		}
+		
+	}
+}

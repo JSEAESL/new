@@ -1,0 +1,10 @@
+package
+{
+	public class KeyData
+	{
+		private static var ASyr:Array = ["A1","A2","A3","A4"]
+		public function KeyData()
+		{
+		}
+	}
+}

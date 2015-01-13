@@ -1,0 +1,27 @@
+package Hit
+{
+	import flash.display.BitmapData;
+	import flash.display.Sprite;
+
+	public class BaseHit extends Sprite implements IHit
+	{
+		public var m_shin:Sprite;
+		public var bitData:BitmapData;
+		public function BaseHit(skin:Sprite)
+		{
+			m_shin = skin
+			bit1 = new BitmapData(200,200,true,0x00000000);
+			bit1.draw(r1);
+			addChild(skin)
+		}
+		
+		public function getHit():*
+		{
+			return null;
+		}
+		
+		public function HitChange(otherHit:IHit):void
+		{
+		}
+	}
+}

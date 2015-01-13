@@ -1,0 +1,32 @@
+package
+{
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+
+	public class JRenderManager
+	{
+		private static var ins:JRenderManager = new JRenderManager();
+		
+		private var timer:Timer;
+		private var renderList:Array;
+		public function JRenderManager()
+		{
+			renderList = [];
+			timer = new Timer(30,1)
+			timer.addEventListener(TimerEvent.TIMER_COMPLETE,timerRender);
+		}
+		
+		public function addToQueue(Call:JCallLater):void
+		{
+			
+		}
+		
+		private function timerRender(e:TimerEvent):void
+		{
+			for each(var i:* in renderList)
+			{
+
+			}
+		}
+	}
+}

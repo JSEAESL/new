@@ -1,0 +1,19 @@
+package
+{
+	public class KeyVo
+	{
+		private var Str:String;
+		private var isCD:Boolean;
+		private var cost:Number;
+		private var func:Function
+		public function KeyVo()
+		{
+		}
+		
+		public static function creatVo():KeyVo
+		{
+			var result:KeyVo;
+			return result;
+		}
+	}
+}

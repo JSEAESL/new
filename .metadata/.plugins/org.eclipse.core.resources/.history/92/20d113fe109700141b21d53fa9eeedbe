@@ -1,0 +1,9 @@
+package Pools
+{
+	public class ClassFactory
+	{
+		public function ClassFactory()
+		{
+		}
+	}
+}

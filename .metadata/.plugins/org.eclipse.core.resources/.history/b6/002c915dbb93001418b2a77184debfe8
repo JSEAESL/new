@@ -1,0 +1,46 @@
+package
+{
+	import flash.display.Stage;
+	import flash.events.KeyboardEvent;
+
+	public class KeyStage
+	{
+		public static var ins:KeyStage =new KeyStage();
+		public function KeyStage()
+		{
+		}
+		
+		public var m_stage:Stage;
+		public function setStage(stage:Stage):void
+		{
+			m_stage = stage;
+			removeEvent();
+			addEvent();
+		}
+		
+		private function removeEvent():void
+		{
+			
+		}
+
+		private function addEvent():void
+		{
+			if (m_stage == null) return;
+			
+			m_stage.addEventListener(KeyboardEvent.KEY_DOWN,onKeyDown);
+			m_stage.addEventListener(KeyboardEvent.KEY_UP,onKeyUp);
+			
+		}
+		
+		private function onKeyDown(e:KeyboardEvent):void
+		{	
+			trace(e);
+		}
+		
+		private function onKeyUp(e:KeyboardEvent):void
+		{
+			trace(e)
+		}
+		
+	}
+}

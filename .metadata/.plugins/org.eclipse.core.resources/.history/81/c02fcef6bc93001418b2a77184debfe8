@@ -1,0 +1,9 @@
+package
+{
+	public class KeyView
+	{
+		public function KeyView()
+		{
+		}
+	}
+}

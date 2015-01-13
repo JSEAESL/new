@@ -1,0 +1,10 @@
+package Hit
+{
+	public class ResCase
+	{
+		public static var ins:ResCase = new ResCase();
+		public function ResCase()
+		{
+		}
+	}
+}

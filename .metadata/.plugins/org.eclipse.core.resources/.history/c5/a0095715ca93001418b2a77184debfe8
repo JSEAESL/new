@@ -1,0 +1,10 @@
+package
+{
+	public class JCallLater
+	{
+		private static var ins:JCallLater = new JCallLater();
+		public function JCallLater()
+		{
+		}
+	}
+}

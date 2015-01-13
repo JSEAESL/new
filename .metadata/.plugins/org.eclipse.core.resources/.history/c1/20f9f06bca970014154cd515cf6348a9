@@ -1,0 +1,71 @@
+package Particle
+{
+	import flash.display.BitmapData;
+	import flash.filters.GlowFilter;
+	import flash.geom.Rectangle;
+	
+	import Pools.CachePool;
+	import Pools.ClassFactory;
+	
+
+	public class ParticleCreater
+	{
+		public static var ins:ParticleCreater = new ParticleCreater();
+		public static var _glowParticle_bds:Array
+		
+		public static var ParticleBD:BitmapData;
+		public function ParticleCreater()
+		{
+			var Pool:CachePool = new CachePool(new ClassFactory(BaseParticle),5000)
+			var Pool2:CachePool = new CachePool(new ClassFactory(ParticleBitmap),5000)
+			_glowParticle_bds = [];
+			
+			ParticleBD= new BitmapData(15, 15, true, 0x00000000);
+			ParticleBD.fillRect(new Rectangle(0, 0, 15, 15), 0xffff0000);
+	
+		}
+		
+		public function creatParticle():BaseParticle
+		{
+			var result:BaseParticle = new BaseParticle()
+			
+			return result;
+		}
+		
+		public function creatBaseParticleByXY(x,y,bitmap:BitmapData,rect:Rectangle):BaseParticle
+		{
+			
+			//var result:BaseParticle = new BaseParticle()
+			var result:BaseParticle = CachePool.PoolDic[BaseParticle].pop()
+			result.Base();
+
+			result.bitData = _glow_bd
+
+			result.rect = rect
+			result.rotation  = Math.random() * 360;
+			result.scaleX = result.scaleY = Math.random() * 0.3 + 0.7;
+			//将白色粒子的出现概率降低至0%
+			result.color = (Math.random() * 255) << 16 | (Math.random() * 255) << 8 | (Math.random() * 255);
+			//初始化物理学变量：初速度，这里不用三角函数进行分散，随机因子的影响力也减少，以获得相对集中的烟花簇效果
+			result.speedX = Math.random() * 10 - 1 
+			result.speedY = -6 + Math.random() * 10 ;
+			//初始化物理学变量：向下的加速度（重力加速度）
+			result.accelerationY = 0.2;
+			result.x = x;
+			result.y = y;
+
+			return result;
+		}
+		
+		private var _glow_bd:BitmapData
+		private var _fireworks_bd:BitmapData
+		private var _final_bd:BitmapData;
+		public function setBG(finBg:BitmapData,fireBG:BitmapData,glowBG:BitmapData):void
+		{
+			_final_bd = finBg
+			_fireworks_bd = fireBG
+			_glow_bd = glowBG
+		}
+		
+	}
+}

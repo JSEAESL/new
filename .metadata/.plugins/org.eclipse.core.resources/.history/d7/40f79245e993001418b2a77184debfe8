@@ -1,0 +1,33 @@
+package
+{
+	import flash.utils.Dictionary;
+
+	public class KeyManager
+	{
+		public static var ins:KeyManager = new KeyManager();
+		public function KeyManager()
+		{
+			init();
+		}
+		
+		private var KeyDic:Dictionary;
+		private function init():void
+		{
+			KeyDic = new Dictionary();
+			KeyDic[90] = KeyData.ZStr;
+			KeyDic[88] = KeyData.XStr;
+			KeyDic[67] = KeyData.CStr;
+			KeyDic[86] = KeyData.VStr;
+		}
+		
+		public function getKeyCode(code:Number):void
+		{
+		
+
+
+			//var codeOb:Object = {"Code":code,"Time":time}
+		}
+
+	}
+}
+class KeyCodeOb{}

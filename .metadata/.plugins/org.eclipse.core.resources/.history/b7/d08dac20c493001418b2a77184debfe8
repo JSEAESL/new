@@ -1,0 +1,33 @@
+package
+{
+	public class JTimeVo
+	{
+		private var m_id:Number;
+		private var m_comFun:Function;
+		private var m_dealFun:Function;
+		
+		private var m_isRun:Boolean;
+		private var m_interval:Number;
+		private var proTime:Number;
+		public function JTimeVo()
+		{
+		}
+		
+		public static function creatVo(id:Number,inter:Number,comFun:Function,dealFun:Function):JTimeVo
+		{
+			var result:JTimeVo = new JTimeVo();
+			result.m_id = id;
+			result.m_interval = inter;
+			result.m_comFun = comFun;
+			result.m_dealFun = dealFun;
+			
+			return result;
+		}
+
+		public function setProTime(time:Number):void
+		{
+			proTime = time;
+		}
+
+	}
+}

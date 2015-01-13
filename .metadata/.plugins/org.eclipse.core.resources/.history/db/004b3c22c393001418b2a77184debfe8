@@ -1,0 +1,14 @@
+package
+{
+	public class JTimeVo
+	{
+		private var m_id:Number;
+		private var m_comFun:Function;
+		private var m_dealFun:Function;
+		
+		private var m_isRun
+		public function JTimeVo()
+		{
+		}
+	}
+}

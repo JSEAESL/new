@@ -1,0 +1,18 @@
+package
+{
+	import flash.display.Stage;
+
+	public class KeyStage
+	{
+		public static var ins:KeyStage =new KeyStage()
+		public function KeyStage()
+		{
+		}
+		
+		public var m_stage:Stage;
+		public function setStage(stage:Stage):void
+		{
+			m_
+		}
+	}
+}

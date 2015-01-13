@@ -1,0 +1,12 @@
+package
+{
+	import flash.utils.Timer;
+
+	public class JTimeVo
+	{
+		private var time:Timer
+		public function JTimeVo()
+		{
+		}
+	}
+}

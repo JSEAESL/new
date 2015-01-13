@@ -1,0 +1,10 @@
+package Particle
+{
+	public interface IParticle
+	{
+		function Base():void
+		function Destory():void
+		function Liveing():void
+		function get Live():void
+	}
+}

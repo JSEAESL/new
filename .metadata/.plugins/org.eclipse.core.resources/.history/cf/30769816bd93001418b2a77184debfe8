@@ -1,0 +1,24 @@
+package
+{
+	import flash.display.Sprite;
+	import flash.events.Event;
+	
+	public class KeyTest extends Sprite
+	{
+		public function KeyTest()
+		{
+			if(stage) 
+				init();
+			else 
+				addEventListener(Event.ADDED_TO_STAGE,init);
+		}
+		
+		private function init():void
+		{
+			removeEventListener(Event.ADDED_TO_STAGE,init);
+			KeyStage.ins.setStage(this.stage);
+			KeyStage.ins.addtoStage(KeyView
+
+		}
+	}
+}

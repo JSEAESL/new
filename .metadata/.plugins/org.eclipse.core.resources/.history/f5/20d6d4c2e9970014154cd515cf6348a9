@@ -1,0 +1,13 @@
+package P___H
+{
+	import flash.display.BitmapData;
+
+	public interface INeedHit
+	{
+		function getBitData():BitmapData
+		function get x():void
+		{
+			
+		}
+	}
+}

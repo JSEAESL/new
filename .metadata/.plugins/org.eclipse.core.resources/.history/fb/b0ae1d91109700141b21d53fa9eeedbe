@@ -1,0 +1,12 @@
+package Particle
+{
+	public class Pool
+	{
+		private var poos:Array;
+		private var MAX_COUNT:Number;
+		public function Pool()
+		{
+			poos = [];
+		}
+	}
+}

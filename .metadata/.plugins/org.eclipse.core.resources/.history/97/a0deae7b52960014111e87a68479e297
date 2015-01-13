@@ -1,0 +1,26 @@
+package Particle
+{
+	public class AParticle implements IParticle
+	{
+		public function AParticle()
+		{
+		}
+		
+		public function Base():void
+		{
+		}
+		
+		public function Destory():void
+		{
+		}
+		
+		public function Liveing():void
+		{
+		}
+		
+		public function get isLive():Boolean
+		{
+			return false
+		}
+	}
+}

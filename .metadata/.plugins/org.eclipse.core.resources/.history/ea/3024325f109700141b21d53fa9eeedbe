@@ -1,0 +1,9 @@
+package Particle
+{
+	public class Pool
+	{
+		public function Pool()
+		{
+		}
+	}
+}

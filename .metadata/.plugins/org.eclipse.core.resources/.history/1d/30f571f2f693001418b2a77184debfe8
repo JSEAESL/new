@@ -1,0 +1,10 @@
+package
+{
+	public class KeyVo
+	{
+		private var Str:String;
+		public function KeyVo()
+		{
+		}
+	}
+}

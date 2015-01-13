@@ -1,0 +1,28 @@
+package
+{
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import Key.KeyView;
+	import Key.KeyStage;
+	
+	[SWF(backgroundColor="#ffffff", width="1024", height="840", frameRate="30")]
+	public class KeyTest extends Sprite
+	{
+		public function KeyTest()
+		{
+			if(stage) 
+				init();
+			else 
+				addEventListener(Event.ADDED_TO_STAGE,init);
+		}
+		
+		private function init():void
+		{
+			removeEventListener(Event.ADDED_TO_STAGE,init);
+			KeyStage.ins.setStage(this.stage);
+			
+			KeyStage.ins.addtoStage(KeyView.ins);
+
+		}
+	}
+}

@@ -1,0 +1,9 @@
+package
+{
+	public class JCallLater
+	{
+		public function JCallLater()
+		{
+		}
+	}
+}

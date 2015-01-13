@@ -1,0 +1,9 @@
+package
+{
+	public class KeyVo
+	{
+		public function KeyVo()
+		{
+		}
+	}
+}

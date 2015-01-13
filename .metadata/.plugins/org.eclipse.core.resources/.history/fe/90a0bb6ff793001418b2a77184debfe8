@@ -1,0 +1,42 @@
+package
+{
+	public class KeyData
+	{
+		//90
+		public static var ZStr:KeyStr;
+		//88
+		public static var XStr:KeyStr;
+		//67
+		public static var CStr:KeyStr;
+		//86
+		public static var VStr:KeyStr;
+		
+		public static var DealTime:Number = 5000;
+		
+		public function KeyData()
+		{
+			
+		}
+		
+		public static function initData():void
+		{
+			ZStr.push(["Z1","Z2","Z3","Z4"]);
+			XStr.push(["X1","X2","X3","X4"]);
+			CStr.push(["C1","C2","C3","C4"]);
+			VStr.push(["V1","V2","V3","V4"]);
+		}
+	}
+}
+class KeyStr 
+{
+	public var KeyArr:Array;
+	public function push(data:Array):void
+	{
+		var len:Number = data.length;
+		KeyArr = [];
+		for(var index:int = 0;index<len; index++ )
+		{
+			KeyArr.push( KeyVo.creatVo(data[index],10) )
+		}
+	}
+}

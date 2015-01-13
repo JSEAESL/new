@@ -1,0 +1,7 @@
+package P___H
+{
+	public interface INeedHit
+	{
+		
+	}
+}

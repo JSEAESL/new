@@ -1,0 +1,16 @@
+package
+{
+	public class JTimeManager
+	{
+		public static var ins:JTimeManager = new JTimeManager();
+		public function JTimeManager()
+		{
+			initClass();
+		}
+		
+		private  function initClass():void
+		{
+			
+		}
+	}
+}

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Tasty/!svn/ver/3129/Client/CookHouse/src/com/greensock/motionPaths
+END
+Direction.as
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Tasty/!svn/ver/3129/Client/CookHouse/src/com/greensock/motionPaths/Direction.as
+END
+MotionPath.as
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Tasty/!svn/ver/3129/Client/CookHouse/src/com/greensock/motionPaths/MotionPath.as
+END
+CirclePath2D.as
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Tasty/!svn/ver/3129/Client/CookHouse/src/com/greensock/motionPaths/CirclePath2D.as
+END
+PathFollower.as
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Tasty/!svn/ver/3129/Client/CookHouse/src/com/greensock/motionPaths/PathFollower.as
+END
+RectanglePath2D.as
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Tasty/!svn/ver/3129/Client/CookHouse/src/com/greensock/motionPaths/RectanglePath2D.as
+END
+LinePath2D.as
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Tasty/!svn/ver/3129/Client/CookHouse/src/com/greensock/motionPaths/LinePath2D.as
+END

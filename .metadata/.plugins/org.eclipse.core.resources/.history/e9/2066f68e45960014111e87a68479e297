@@ -1,0 +1,53 @@
+package Hit
+{
+	
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+	import flash.display.Sprite;
+	import flash.geom.Point;
+	
+	import Key.KeyStage;
+	
+
+	public class HitView extends Sprite
+	{
+		public static var ins:HitView = new HitView();
+		public function HitView()
+		{
+			init();
+		}
+	
+		private var r1:Lmc;
+		private var r2:Dmc;
+		private var BaseHit1:BaseHit;
+		private var BaseHit2:BaseHit;
+		private var bit1:BitmapData;
+		private var bit2:BitmapData
+		private function init():void
+		{
+			r1 = new Lmc()
+			r2 = new Dmc()
+				
+
+				
+
+			BaseHit1 = new BaseHit(r1)
+			BaseHit2 = new BaseHit(r2)
+				
+			BaseHit1.x = 200;
+			BaseHit1.y = 500;
+			addChild(BaseHit1);
+			addChild(BaseHit2);
+	
+			//addChild(new Bitmap(bit1));
+			
+
+			KeyStage.ins.setEasyDraw(BaseHit2);
+			
+			var Hitr:HitRect= new HitRect();
+			addChildAt(Hitr,0);
+			Hitr.setDimHit(BaseHit2);
+		}
+		
+	}
+}

@@ -1,0 +1,65 @@
+package Particle
+{
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
+
+	public class ParticleBitmap  implements IParticle
+	{
+		private var Data:IParticle
+		private var bitmap:Bitmap;
+		private var finaBitData:BitmapData;
+		public function ParticleBitmap()
+		{
+			init();
+		}
+		
+		private function init():void
+		{
+			finaBitData = new BitmapData(10,10,false,0x000000);
+			finaBitData.floodFill(0,0,0xff0000);
+			bitmap = new Bitmap(finaBitData);
+			
+			Data = new BaseParticle();
+			Data.speedX  = 2
+			Data.speedY  = 1
+			Data.accelerationY = 0.2
+		}
+		
+		public function Base():void
+		{
+
+		}
+		
+		public function getBitmap():Bitmap
+		{
+			if(bitmap) init();
+			return bitmap;
+		}
+		
+		public function setData(data:IParticle):void
+		{
+			Data = data;
+		}
+		
+		 public function Liveing():void
+		{
+			Data.Liveing();
+			if(!Data) return;
+			bitmap.x = Data.x;
+			bitmap.y = Data.y;
+			bitmap.rotation = Data.rotation
+			bitmap.alpha = Data.alpha
+			
+		}
+		 
+		 public  function get isLive():Boolean
+		 {
+			 return Data.isLive;
+		 }
+
+		 public function Destory():void
+		 {
+			 
+		 }
+	}
+}

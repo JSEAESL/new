@@ -1,0 +1,26 @@
+package
+{
+	import flash.utils.Dictionary;
+
+	public class JTimeManager
+	{
+		public static var ins:JTimeManager = new JTimeManager();
+		public function JTimeManager()
+		{
+			initClass();
+		}
+		
+		private var timeDic:Dictionary;
+		private function initClass():void
+		{
+			timeDic = new Dictionary();
+		}
+		
+		private function addTimer():void
+		{
+			
+		}
+		
+		
+	}
+}

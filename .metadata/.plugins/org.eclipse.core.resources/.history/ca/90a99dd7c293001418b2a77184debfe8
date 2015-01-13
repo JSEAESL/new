@@ -1,0 +1,9 @@
+package
+{
+	public class JTimeVo
+	{
+		public function JTimeVo()
+		{
+		}
+	}
+}

@@ -1,0 +1,53 @@
+package
+{
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+
+	public class JRenderManager
+	{
+		private static var ins:JRenderManager = new JRenderManager();
+		
+		private var timer:Timer;
+		private var renderList:Array;
+		public function JRenderManager()
+		{
+			renderList = [];
+			timer = new Timer(30,1)
+			timer.addEventListener(TimerEvent.TIMER_COMPLETE,timerRender);
+		}
+		
+		public static function addToQueue(Call:JCallLater):void
+		{
+			ins._addToQueue(Call);
+		}
+		
+		private function _addToQueue(Call:JCallLater):void
+		{
+			var index:Number = renderList.indexOf(Call);
+			if ( index != -1 ) return ;
+			renderList.push(Call);
+			
+			if(timer.running==false){
+				timer.reset();
+				timer.start();
+			}
+		}
+		
+		private function _removeOutQueue(Call:JCallLater):void{
+			var index:int=renderList.indexOf(Call);
+			if(index ==-1)return ;
+			
+			renderList.splice(index,1);
+			return ;
+		}
+		
+		private function timerRender(e:TimerEvent):void
+		{
+			for each(var i:JCallLater in renderList)
+			{
+				i.render();
+
+			}
+		}
+	}
+}

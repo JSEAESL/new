@@ -1,0 +1,115 @@
+package
+{
+	import flash.events.TimerEvent;
+	import flash.utils.Dictionary;
+	import flash.utils.Timer;
+	import flash.utils.getTimer;
+	import Key.KeyView;
+	import Key.KeyVo;
+
+	public class KeyManager
+	{
+		public static var ins:KeyManager = new KeyManager();
+		public function KeyManager()
+		{
+			init();
+		}
+		
+		private var KeyDic:Dictionary;
+		private var time:Timer;
+		private var coolTime:Timer;
+		private function init():void
+		{
+			KeyDic = new Dictionary();
+			KeyDic[90] = KeyData.ZStr;
+			KeyDic[88] = KeyData.XStr;
+			KeyDic[67] = KeyData.CStr;
+			KeyDic[86] = KeyData.VStr;
+			
+			KeyDic[90 + 88] = KeyData.ZXStr;
+
+			KeyDic[88 + 67] = KeyData.XCStr;
+
+			
+			KeyDic[67 + 86] = KeyData.CVStr;
+
+			
+			Waitlist = [];
+			time = new Timer(10,1)
+			time.addEventListener(TimerEvent.TIMER_COMPLETE,onTimer);	
+		
+			coolTime = new Timer(3000,1);
+			coolTime.addEventListener(TimerEvent.TIMER_COMPLETE,onCool);
+		}
+		
+		private function onCool(e:TimerEvent):void
+		{
+			KeyData.Cool();
+			coolTime.stop();
+		}
+		
+		//重置   冷却Time
+		private function CoolTimeStart():void
+		{
+			//trace(coolTime.running)
+			//if(!coolTime.running)
+			{
+				coolTime.reset();
+				coolTime.start();
+			}
+			
+		}
+		
+		
+		private function onTimer(e:TimerEvent):void
+		{
+			var len:Number= Waitlist.length;
+			var keyList:Array= Waitlist.splice(0,len);
+			
+			var str:String  = "";
+			var tVo:KeyVo;
+			var allCost:Number = 0;
+			var code:Number = 0
+			for(var index:Number = 0;index<len; index++)
+			{
+				if(!KeyDic[keyList[index].code]) return;
+				code += keyList[index].code
+
+			}
+			
+			tVo = KeyDic[code].getCanUseKey()
+			if(!tVo) return;
+			allCost += tVo.getNowCost()
+			
+			if( (KeyData.NowHeatNum + allCost) > 100) return;
+			KeyData.addHeat(allCost)
+			
+			KeyView.ins.SideShowText(tVo.useKey());
+			CoolTimeStart();
+		}
+		
+		private var Waitlist:Array;
+		private var lastTime:Number;
+		public function getKeyCode(code:Number):void
+		{
+			lastTime = getTimer(); 
+			var ob:KeyCodeOb  = new KeyCodeOb()
+			ob.code = code
+			ob.creatTime = lastTime
+			Waitlist.push(ob);
+			if(!time.running)
+			{
+				time.reset();
+				time.start();
+			}
+			
+		}
+		
+
+	}
+}
+class KeyCodeOb{
+	public var code:Number;
+	public var creatTime:Number
+	
+}

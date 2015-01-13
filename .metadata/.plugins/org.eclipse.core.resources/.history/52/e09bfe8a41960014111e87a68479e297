@@ -1,0 +1,20 @@
+package Hit
+{
+	import flash.display.Sprite;
+
+	public class BaseHit implements IHit
+	{
+		public function BaseHit(skin:Sprite)
+		{
+		}
+		
+		public function getHit():*
+		{
+			return null;
+		}
+		
+		public function HitChange(otherHit:IHit):void
+		{
+		}
+	}
+}
