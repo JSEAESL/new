@@ -29,8 +29,13 @@ package Particle
 		public function creatBaseNeedHitByXY(x,y,bitData:BitmapData):BaseNeedHit
 		{
 			var result:BaseNeedHit = CachePool.PoolDic[BaseNeedHit].pop()
-			result.setData(bitData)
+			result.setBitmapData(bitData)
 			result.Base();
+			var pData:BaseParticle = new BaseParticle()
+			pData.speedX = 5 *Math.random() + 5
+			pData.speedY = 5 *Math.random() + 5
+			result.setParticleData(pData)
+			
 
 			
 			

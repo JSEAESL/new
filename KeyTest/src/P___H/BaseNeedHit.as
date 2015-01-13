@@ -33,9 +33,14 @@ package P___H
 			
 		}
 		
-		public function setData(data:BitmapData):void
+		public function setParticleData(BaseData:BaseParticle):void
 		{
-			bitData = new BitmapData(0,0,true,0x00000000);
+			particleData = BaseData
+		}
+		
+		public function setBitmapData(data:BitmapData):void
+		{
+			bitData = new BitmapData(data.width,data.height,true,0x000000);
 			bitData.draw(data);
 		}
 		
@@ -63,6 +68,7 @@ package P___H
 		
 		public function Liveing():void
 		{
+			particleData.Liveing();
 			/*抛物线运动公式计算x和y坐标，水平方向：匀速直线运动，竖直方向：匀加速直线运动*/
 			x += particleData.speedX;
 			y += particleData.speedY;
@@ -85,6 +91,18 @@ package P___H
 
 			return particleData.isLive;
 		}
+		
+		private var mHit:Boolean = false
+		public function get Hit():Boolean
+		{
+			return mHit;
+		}
+		
+		public function set Hit(boo:Boolean):void
+		{
+			mHit = boo
+		}
+		
 		
 		public function Destory():void
 		{

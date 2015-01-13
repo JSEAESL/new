@@ -35,7 +35,7 @@ package Particle
 			//让粒子的旋转角度与速度方向一致，用反三角函数进行计算，不懂的可以重温第二章跟Math类有关的内容
 			rotation = Math.atan2(speedY, speedX) / Math.PI * 180;
 			//通过改变alpha值实现淡出
-			alpha -= 0.02;
+			//alpha -= 0.02;
 			
 			PHView.ins.mHitRect.addHit(this);
 		}
@@ -50,7 +50,15 @@ package Particle
 			return ( !(x>KeyTest.T_W || y>KeyTest.T_H || x<0 ||y<0) ) ;
 		}
 		
-
+		public function get Hit():Boolean
+		{
+			return false;
+		}
+		
+		public function set Hit(boo:Boolean):void
+		{
+		}
+		
 		
 		public function get m_x():Number
 		{

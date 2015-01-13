@@ -13,7 +13,8 @@ package P___H
 		private var _Bitmap:Bitmap;
 		public function BaseBitmapHit(bitmapData:BitmapData)
 		{
-			_BitmapData = bitmapData
+			_BitmapData = new BitmapData(bitmapData.width,bitmapData.height,true,0x000000);
+			_BitmapData.draw(bitmapData);
 			_Bitmap = new Bitmap(_BitmapData)
 			addChild(_Bitmap);
 		}

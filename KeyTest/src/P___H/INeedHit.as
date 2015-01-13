@@ -11,5 +11,9 @@ package P___H
 		
 		
 		function get Rect():Rectangle
+		
+		function set Hit(boo:Boolean):void
+		function get Hit():Boolean
+
 	}
 }
