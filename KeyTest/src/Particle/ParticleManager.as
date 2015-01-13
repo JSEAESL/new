@@ -1,5 +1,6 @@
 package Particle
 {
+	import P___H.PHView;
 
 	public class ParticleManager
 	{
@@ -26,7 +27,6 @@ package Particle
 				if(i.isLive)
 				{
 					i.Liveing();
-						
 				}else
 				{
 					var index:int = particList.indexOf(i);

@@ -6,6 +6,7 @@ package P___H
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.geom.Rectangle;
+	import flash.net.dns.AAAARecord;
 	
 	import Hit.I.IHit;
 	
@@ -13,7 +14,7 @@ package P___H
 	import Particle.IParticle;
 	import Particle.ParticleCreater;
 	
-	public class BaseNeedHit extends Sprite implements IHit, IParticle
+	public class BaseNeedHit extends Sprite implements INeedHit, IParticle
 	{
 		private var bitData:BitmapData
 		private var bit:Bitmap;
@@ -34,38 +35,54 @@ package P___H
 		
 		public function setData(data:BitmapData):void
 		{
-			bitData = data;
+			bitData = new BitmapData(0,0,true,0x00000000);
+			bitData.draw(data);
 		}
 		
-		public function getHit():*
+		public function getBitData():BitmapData
 		{
-			return null;
+			return bitData
 		}
-		
-		public function Hit(...arg):Boolean
+		public function get m_x():Number
 		{
-			return false;
+			return x
 		}
-		
-		public function HitChange(otherHit:*):void
+		public function get m_y():Number
 		{
+			return y
 		}
 		
-		public function getHitRect():Rectangle
+		
+		public function get Rect():Rectangle
 		{
-			return null;
+			var t:Rectangle = this.getBounds(this)
+			t.x = this.x;
+			t.y = this.y;
+			return t;
 		}
-		
-		
-
 		
 		public function Liveing():void
 		{
+			/*抛物线运动公式计算x和y坐标，水平方向：匀速直线运动，竖直方向：匀加速直线运动*/
+			x += particleData.speedX;
+			y += particleData.speedY;
 			
+			/*每次都要为y方向的速度添加重力加速度*/
+			particleData.speedY += particleData.accelerationY;	
+			particleData.speedX += particleData.accelerationX;				
+			
+			//让粒子的旋转角度与速度方向一致，用反三角函数进行计算，不懂的可以重温第二章跟Math类有关的内容
+			rotation = Math.atan2(particleData.speedX, particleData.speedY) / Math.PI * 180;
+			//通过改变alpha值实现淡出
+			//alpha -= 0.02;
+			
+			PHView.ins.mHitRect.addHit(this);
 		}
 		
 		public function get isLive():Boolean
 		{
+			if(!particleData)return false
+
 			return particleData.isLive;
 		}
 		

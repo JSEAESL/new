@@ -42,7 +42,6 @@ package Particle
 		
 		override public function Destory():void
 		{
-			CachePool.PoolDic[BaseParticle].add(this);
 		}
 		
 		override public function get isLive():Boolean

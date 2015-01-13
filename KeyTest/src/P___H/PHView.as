@@ -47,6 +47,7 @@ package P___H
 		}
 		
 		
+		
 		private function onEnter(e:Event):void
 		{
 			if(ParticleManager.ins.Length == 0)
@@ -54,6 +55,7 @@ package P___H
 				for(var count:Number = 0; count<1; count++)
 				{
 					var Data:BaseNeedHit = ParticleCreater.ins.creatBaseNeedHitByXY(0,0,new Fmc())
+					KeyStage.ins.setEasyDraw(Data);
 					ParticleManager.ins.addPartic(Data)
 					addChild(Data);
 				}
