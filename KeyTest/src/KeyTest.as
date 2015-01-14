@@ -12,7 +12,7 @@ package
 	import Particle.ParticleView;
 	
 	
-	[SWF(backgroundColor="#666666", width="1024", height="840", frameRate="30")]
+	[SWF(backgroundColor="#000000", width="1024", height="840", frameRate="30")]
 	public class KeyTest extends Sprite
 	{
 		public static const T_W:Number = 1024;

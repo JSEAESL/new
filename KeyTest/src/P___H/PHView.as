@@ -1,17 +1,15 @@
 package P___H
 {
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.TimerEvent;
 	import flash.geom.Point;
-	import flash.geom.Rectangle;
+	import flash.utils.Timer;
 	
 	import Hit.HitRect;
 	
 	import Key.KeyStage;
 	
-	import Particle.BaseParticle;
 	import Particle.ParticleCreater;
 	import Particle.ParticleManager;
 
@@ -19,35 +17,37 @@ package P___H
 	{
 		public static var ins:PHView = new PHView()
 			
-		private var ViewBitmap:BitmapData;
-		private var ViewBit:Bitmap;
-		private var ViewMainRect:Rectangle;
+
 		
-		private var bitbd:BitmapData;
 		
-		private var _0pt:Point
-		
+		private var time:Timer;
 		public function PHView()
 		{
-			ParticleInit();
 			init();
 			
 			addEventListener(Event.ENTER_FRAME,onEnter);
-
+			//time = new Timer(1000);
+			//time.addEventListener(TimerEvent.TIMER,onTime);
+			//time.start();
 		}
 		
-		private function ParticleInit():void
+		private function onTime(e:TimerEvent):void
 		{
-			ViewBitmap = new BitmapData(KeyTest.T_W,KeyTest.T_H,false,0x000000)
-			bitbd = new BitmapData(KeyTest.T_W, KeyTest.T_H, true, 0x000000);
+			if(ParticleManager.ins.Length == 0)
+			{
+				for(var count:Number = 0; count<1; count++)
+				{
+					var Data:BaseNeedHit = ParticleCreater.ins.creatBaseNeedHitByXY(0,0,new DDmc())
+					KeyStage.ins.setEasyDraw(Data);
+					ParticleManager.ins.addPartic(Data)
+					addChild(Data);
+				}
+			}
 			
-			ViewBit = new Bitmap(ViewBitmap);
 			
-			ViewMainRect = new Rectangle(0, 0, KeyTest.T_W, KeyTest.T_H);
-			_0pt = new Point();
+			ParticleManager.ins.live();
+			mHitRect.updata(e);
 			
-			ParticleCreater.ins.setBG(ViewBitmap,bitbd)
-			addChild(ViewBit);
 		}
 		
 		public  var mHitRect:HitRect;
@@ -63,24 +63,24 @@ package P___H
 		}
 		
 		
+		
 		private function onEnter(e:Event):void
 		{
+			
 			if(ParticleManager.ins.Length == 0)
 			{
-				for(var count:Number = 0; count<1; count++)
+				for(var count:Number = 0; count<5000; count++)
 				{
-					var Data:BaseParticle = ParticleCreater.ins.creatBaseParticleByXY(0,0,null,ViewMainRect)
-					ParticleManager.ins.addPartic(Data)				
+					var Data:BaseNeedHit = ParticleCreater.ins.creatBaseNeedHitByXY(0,0,new DDmc())
+					KeyStage.ins.setEasyDraw(Data);
+					ParticleManager.ins.addPartic(Data)
+					addChild(Data);
 				}
 			}
 
 			
-			ViewBitmap.lock()
-			bitbd.fillRect(bitbd.rect,0xff000000);
 			ParticleManager.ins.live();
-			ViewBitmap.copyPixels(bitbd, ViewMainRect, _0pt);
 			mHitRect.updata(e);
-			ViewBitmap.unlock();
 		}
 	}
 }

@@ -43,17 +43,24 @@ package Hit
 			for each(var i:INeedHit in needHitList)
 			{
 				var rect:Rectangle =  mRoot.getHitRect()
+				var hRect:Rectangle = i.Rect;
+				if( !rect.union(hRect) )
+				{
+					delHit(i)
+					return;
+				}
 				var point1:Point = new Point(rect.x, rect.y);  //top-left pixel of tree
 				var point2:Point = new Point(i.m_x, i.m_y);  //top-left pixel of hook
 		
-				if( mRoot.Hit(point1, 255, i.getBitData(), point2, 255) )
+				if( i.getBitData() && mRoot.Hit(point1, 255, i.getBitData(), point2, 255) )
 				{
 					mRoot.HitChange(i);
-				}
-				if( !checkNeedHit(i.m_x,i.m_y,rect.x,rect.y,rect.width,rect.height) )
+					i.Hit = true;
+				}else
 				{
-					delHit(i)
+					i.Hit = false;
 				}
+
 			}
 		}
 		public function updata(e:Event = null):void
@@ -103,7 +110,9 @@ package Hit
 		{			
 			if(!mRoot) return;
 			var rect:Rectangle = mRoot.getHitRect();
-			if( checkNeedHit(_Hit.m_x,_Hit.m_y,rect.x,rect.y,rect.width,rect.height) )
+			var hRect:Rectangle = _Hit.Rect;
+
+			if( rect.union(hRect) )
 			{
 				var index:Number = needHitList.indexOf(_Hit);
 				if(index == -1)
@@ -122,28 +131,7 @@ package Hit
 			return;
 
 		}
-		
-		private function checkNeedHit(x,y,Rx,Ry,Rw,Rh):Boolean
-		{
-			//trace("x: "  + x)
-			//trace("y: "  + y)
-			//trace("Rx: "  + Rx)
-			//trace("Ry: "  + Ry)
-			if(x>Rx && y>Ry && x<Rw&& y<Rh)
-			{
-				trace("x: "  + x)
-				trace("y: "  + y)
-				trace("Rx: "  + Rx)
-				trace("Ry: "  + Ry)
-				trace("Rw: "  + Rw)
-				trace("Rh: "  + Rh)
-				
-				return true
-			}else
-			{
-				return false
-			}
-		}
+
 		public function setDimHit(DimHit:IHit):void
 		{
 			mRoot = DimHit;

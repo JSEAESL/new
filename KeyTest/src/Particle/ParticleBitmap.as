@@ -68,7 +68,6 @@ package Particle
 		 public function Destory():void
 		 {
 			 Data.Destory();
-			 CachePool.PoolDic[ParticleBitmap].add(this);
 		 }
 		 
 		public function get m_x():Number

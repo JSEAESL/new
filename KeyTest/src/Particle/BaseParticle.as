@@ -11,8 +11,6 @@ package Particle
 
 	public class BaseParticle extends AParticle implements IParticle,INeedHit
 	{
-		public var bitData:BitmapData;
-		public var rect:Rectangle
 		public function BaseParticle()
 		{
 			super();
@@ -37,14 +35,13 @@ package Particle
 			//让粒子的旋转角度与速度方向一致，用反三角函数进行计算，不懂的可以重温第二章跟Math类有关的内容
 			rotation = Math.atan2(speedY, speedX) / Math.PI * 180;
 			//通过改变alpha值实现淡出
-			alpha -= 0.02;
+			//alpha -= 0.02;
 			
 			PHView.ins.mHitRect.addHit(this);
 		}
 		
 		override public function Destory():void
 		{
-			CachePool.PoolDic[BaseParticle].add(this);
 		}
 		
 		override public function get isLive():Boolean
@@ -53,27 +50,15 @@ package Particle
 			return ( !(x>KeyTest.T_W || y>KeyTest.T_H || x<0 ||y<0) ) ;
 		}
 		
-		private var _copyParticle_rect:Rectangle = new Rectangle(0, 0, 15, 15);
-		private var _copyParticle_point:Point = new Point();
-
-		public function UpdataBitmap():void
+		public function get Hit():Boolean
 		{
-			if(!bitData && !rect) return;
-
-			//确定要绘制到BitmapData上的颜色
-			var _color:uint =	color;
-			var _centerX:Number = x;
-			var _centerY:Number = y;
-
-	
-			var _random_bd:BitmapData = ParticleCreater.ParticleBD;
-			trace("!!!!!!!!!!")
-			//将其绘制到发光的BitmapData上
-			//用现有的Rectangle和Point避免重复new
-			_copyParticle_point.x = _centerX;
-			_copyParticle_point.y = _centerY;
-			bitData.copyPixels(_random_bd, _copyParticle_rect, _copyParticle_point);
+			return false;
 		}
+		
+		public function set Hit(boo:Boolean):void
+		{
+		}
+		
 		
 		public function get m_x():Number
 		{
